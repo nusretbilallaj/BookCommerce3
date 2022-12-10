@@ -1,0 +1,22 @@
+﻿@model BookCommerce3.Model.Kategoria
+
+<form method="post">
+    <div class="border p-4">
+        <input type="hidden" asp-for="Id"/>
+        <div class="row p-3">
+            <h2 class="text-primary">Ndryshimi i kategorise</h2>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Emri"></label>
+            <input asp-for="Emri" class="form-control"/>
+            <span asp-validation-for="Emri"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Renditja"></label>
+            <input asp-for="Renditja" class="form-control"/>
+            <span asp-validation-for="Renditja"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Ndrysho</button>
+        <a asp-controller="Kategori" asp-action="Listo" class="btn btn-secondary">Kthehu</a>
+    </div>
+</form>
