@@ -1,0 +1,16 @@
+﻿@model BookCommerce3.Model.Mbulesa
+
+<form method="post">
+    <div class="border p-4">
+        <div class="row p-3">
+            <h2 class="text-primary">Shtimi i mbulesave</h2>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Emri"></label>
+            <input asp-for="Emri" class="form-control"/>
+            <span asp-validation-for="Emri"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Shto</button>
+        <a asp-controller="Mbulesa" asp-action="Listo" class="btn btn-secondary">Kthehu</a>
+    </div>
+</form>

@@ -6,39 +6,38 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookCommerce3.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class KategoriController : Controller
+    public class MbulesaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public KategoriController(IUnitOfWork unitOfWork)
+        public MbulesaController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
         public IActionResult Listo()
         {
-          List<Kategoria> lista= _unitOfWork.Kategoria.GetAll().ToList();
+          List<Mbulesa> lista= _unitOfWork.Mbulesa.GetAll().ToList();
             return View(lista);
         }
 
         public IActionResult Krijo()
         {
-            var obj = new Kategoria();
-            // obj.Renditja = _kontekst.Kategorite.Max(x=>x.Renditja)+1;
+            var obj = new Mbulesa();
             return View(obj);
         }
 
         [HttpPost]
-        public IActionResult Krijo(Kategoria kat)
+        public IActionResult Krijo(Mbulesa mbulesa)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Kategoria.Add(kat);
+                _unitOfWork.Mbulesa.Add(mbulesa);
                 _unitOfWork.Save();
                 TempData["suksesi"] = "U shtua me sukses!";
                 return RedirectToAction("Listo");
             }
 
-            return View(kat);
+            return View(mbulesa);
         }
 
         public IActionResult Ndrysho(int? id)
@@ -47,7 +46,7 @@ namespace BookCommerce3.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Kategoria kat= _unitOfWork.Kategoria.FirstOrDefault(x=>x.Id==id);
+            Mbulesa kat= _unitOfWork.Mbulesa.FirstOrDefault(x=>x.Id==id);
             if (kat==null)
             {
                 return NotFound();
@@ -56,17 +55,17 @@ namespace BookCommerce3.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Ndrysho(Kategoria kat)
+        public IActionResult Ndrysho(Mbulesa mbulesa)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Kategoria.Update(kat);
+                _unitOfWork.Mbulesa.Update(mbulesa);
                 _unitOfWork.Save();
                 TempData["suksesi"] = "U ndryshua me sukses!";
                 return RedirectToAction("Listo");
             }
 
-            return View(kat);
+            return View(mbulesa);
         }
 
         public IActionResult Fshi(int? id)
@@ -75,12 +74,12 @@ namespace BookCommerce3.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Kategoria kat = _unitOfWork.Kategoria.FirstOrDefault(x=>x.Id==id);
-            if (kat == null)
+            Mbulesa mbulesa = _unitOfWork.Mbulesa.FirstOrDefault(x=>x.Id==id);
+            if (mbulesa == null)
             {
                 return NotFound();
             }
-            return View(kat);
+            return View(mbulesa);
         }
 
         [HttpPost,ActionName("Fshi")]
@@ -90,12 +89,12 @@ namespace BookCommerce3.Web.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Kategoria katPrjDb = _unitOfWork.Kategoria.FirstOrDefault(x=>x.Id==id);
-            if (katPrjDb==null)
+            var mbulesat = _unitOfWork.Mbulesa.FirstOrDefault(y=>y.Id==id);
+            if (mbulesat == null)
             {
                 return NotFound();
             }
-            _unitOfWork.Kategoria.Remove(katPrjDb);
+            _unitOfWork.Mbulesa.Remove(mbulesat);
             _unitOfWork.Save();
             TempData["suksesi"] = "Eshte fshire me sukses!";
             return RedirectToAction("Listo");
