@@ -16,9 +16,13 @@ namespace BookCommerce3.DataAccess.Repository
             _kon = kon;
             Kategoria = new KategoriaRepository(_kon);
             Mbulesa = new MbulesaRepository(_kon);
+            NenKategoria = new NenKategoriaRepository(_kon);
+            Produkti = new ProduktiRepository(_kon);
         }
         public IKategoriaRepository Kategoria { get; }
+        public INenKategoriaRepository NenKategoria { get; }
         public IMbulesaRepository Mbulesa { get; }
+        public IProduktiRepository Produkti { get; }
 
         public void Save()
         {

@@ -1,0 +1,60 @@
+﻿@model BookCommerce3.Model.ViewModel.ProduktiViewModel
+
+<form method="post">
+    <div class="border p-4 row">
+        <input type="hidden" asp-for="Produkti.Id"/>
+        <input type="hidden" asp-for="Produkti.ImagePath"/>
+        <div class="row p-3">
+            <h2 class="text-primary">@(@Model.Produkti.Id!=0?"Ndrysho":"Shto") Produktin</h2>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Produkti.Emri"></label>
+            <input asp-for="Produkti.Emri" class="form-control" />
+            <span asp-validation-for="Produkti.Emri"></span>
+        </div>
+        <div class="mb-2">
+            <label asp-for="Produkti.Pershkrimi"></label>
+            <input asp-for="Produkti.Pershkrimi" class="form-control" />
+            <span asp-validation-for="Produkti.Pershkrimi"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.Isbn"></label>
+            <input asp-for="Produkti.Isbn" class="form-control" />
+            <span asp-validation-for="Produkti.Isbn"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.Autori"></label>
+            <input asp-for="Produkti.Autori" class="form-control" />
+            <span asp-validation-for="Produkti.Autori"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.CmimiBaze"></label>
+            <input asp-for="Produkti.CmimiBaze" class="form-control" />
+            <span asp-validation-for="Produkti.CmimiBaze"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.Cmimi"></label>
+            <input asp-for="Produkti.Cmimi" class="form-control" />
+            <span asp-validation-for="Produkti.Cmimi"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.Cmimi50"></label>
+            <input asp-for="Produkti.Cmimi50" class="form-control" />
+            <span asp-validation-for="Produkti.Cmimi50"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.Cmimi100"></label>
+            <input asp-for="Produkti.Cmimi100" class="form-control" />
+            <span asp-validation-for="Produkti.Cmimi100"></span>
+        </div>
+        <div class="mb-2 col-6">
+            <label asp-for="Produkti.ImagePath"></label>
+            <input type="file" id="fileBox" name="file" class="form-control" />
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Ndrysho</button>
+            <a asp-controller="Produkti" asp-action="Listo" class="btn btn-secondary">Kthehu</a>
+        </div>
+
+    </div>
+</form>
